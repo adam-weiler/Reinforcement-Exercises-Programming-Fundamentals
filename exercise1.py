@@ -19,7 +19,7 @@ frequency_80B = trains_list[5]['frequency_in_minutes'] # 30
 direction_610 = trains_list[2]['direction'] # north
 
 #Exercise 6
-def get_trains_from_heading(direction):
+def get_trains_from_heading(direction): #Returns a list of all trains heading in a certain direction.
     new_trains_list = []
 
     for train in trains_list: #Iterates through each train in the list.
@@ -30,8 +30,28 @@ def get_trains_from_heading(direction):
 
 #Exercise 4
 print(get_trains_from_heading('north')) #Prints 3 trains heading north.
-print(\n)
+print()
 
 #Exercise 5
 print(get_trains_from_heading('east')) #Prints 1 train heading east.
-print(\n)
+print()
+
+#Exercise 7
+trains_list[0]['first_departure_time'] = 6 #Adds 'first_departure_time:6' to first train.
+
+#Exercise 8
+def sort_trains_by_frequency(trains): #Returns a list of frequencies with and their specific trains.
+    trains_by_frequency = {}
+
+    for train in trains: #Iterates through each train in trains
+        name = train['train'] #Train name.
+        freq = train['frequency_in_minutes'] #Train frequency.
+
+        if freq in trains_by_frequency: #If the frequency already exists in the list.
+            trains_by_frequency[freq].append(name)
+        else: #Else, this is a new frency and is added to the list.
+            trains_by_frequency[freq] = [name]
+
+    return trains_by_frequency
+
+print(sort_trains_by_frequency(trains_list))
